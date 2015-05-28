@@ -1,6 +1,6 @@
 # CityGML Validate Ring
 
-Validate a CityGML ring against the QIE suite
+Validate a CityGML ring against the [QIE suite](https://github.com/tudelft3d/CityGML-QIE-3Dvalidation/blob/master/errors/errors.md#ring)
 
 ## Usage
 

@@ -1,0 +1,36 @@
+{
+  "name": "citygml-validate-ring",
+  "version": "0.1.0",
+  "description": "Validate a CityGML ring against the QIE suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/polygon-city/citygml-validate-ring"
+  },
+  "keywords": [
+    "citygml",
+    "validation",
+    "geometry",
+    "ring",
+    "2d",
+    "mapping",
+    "gis"
+  ],
+  "author": "Robin Hawkes <rob@vizicities.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/polygon-city/citygml-validate-ring/issues"
+  },
+  "homepage": "https://github.com/polygon-city/citygml-validate-ring",
+  "dependencies": {
+    "2d-polygon-self-intersections": "^1.3.1",
+    "async": "^1.0.0",
+    "citygml-points": "^0.1.0",
+    "lodash": "^3.9.3",
+    "points-3d-to-2d": "^0.1.0",
+    "polygon": "^1.0.1"
+  }
+}

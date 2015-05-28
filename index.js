@@ -14,8 +14,6 @@ var isects = require("2d-polygon-self-intersections");
 var citygmlPoints = require("citygml-points");
 var points3dto2d = require("points-3d-to-2d");
 
-module.exports = citygmlValidateRing;
-
 var citygmlValidateRing = function(ringXML, callback) {
   var points = citygmlPoints(ringXML);
 
@@ -130,3 +128,5 @@ var GE_R_COLLAPSED_TO_LINE = function(points) {
   //
   // Example: https://github.com/tudelft3d/CityGML-QIE-3Dvalidation/raw/master/errors/figs/105.png
 };
+
+module.exports = citygmlValidateRing;

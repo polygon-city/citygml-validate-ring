@@ -18,6 +18,7 @@ var citygmlValidateRing = function(ringXML, callback) {
   var points = citygmlPoints(ringXML);
 
   // Validate ring
+  // Validation errors are stored within results array
   async.series([
     GE_R_TOO_FEW_POINTS(points),
     GE_R_CONSECUTIVE_POINTS_SAME(points),
@@ -44,7 +45,7 @@ var GE_R_TOO_FEW_POINTS = function(points) {
     if (pointCount > 2) {
       callback(null);
     } else {
-      callback(new Error("GE_R_TOO_FEW_POINTS: A ring should have at least 3 points."), points);
+      callback(null, [new Error("GE_R_TOO_FEW_POINTS: A ring should have at least 3 points."), points]);
     }
   };
 };
@@ -73,7 +74,7 @@ var GE_R_CONSECUTIVE_POINTS_SAME = function(points) {
     if (!duplicate) {
       callback(null);
     } else {
-      callback("GE_R_CONSECUTIVE_POINTS_SAME: Consecutive points in a ring should not be the same", duplicatedPoints);
+      callback(null, [new Error("GE_R_CONSECUTIVE_POINTS_SAME: Consecutive points in a ring should not be the same"), duplicatedPoints]);
     }
   };
 };
@@ -89,7 +90,7 @@ var GE_R_NOT_CLOSED = function(points) {
     if (_.isEqual(firstPoint, lastPoint)) {
       callback(null);
     } else {
-      callback(new Error("GE_R_NOT_CLOSED: The first and last points have to be identical"), [firstPoint, lastPoint]);
+      callback(null, [new Error("GE_R_NOT_CLOSED: The first and last points have to be identical"), [firstPoint, lastPoint]]);
     }
   };
 };
@@ -116,7 +117,7 @@ var GE_R_SELF_INTERSECTION = function(points) {
     if (!selfIntersections || selfIntersections.length === 0) {
       callback(null);
     } else {
-      callback(new Error("GE_R_SELF_INTERSECTION: A ring should be simple, ie. it should not self-intersect"), selfIntersections);
+      callback(null, [new Error("GE_R_SELF_INTERSECTION: A ring should be simple, ie. it should not self-intersect"), selfIntersections]);
     }
   };
 };

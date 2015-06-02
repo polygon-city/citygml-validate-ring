@@ -26,7 +26,12 @@ var citygmlValidateRing = function(ringXML, callback) {
     GE_R_SELF_INTERSECTION(points)
     // GE_R_COLLAPSED_TO_LINE(points)
   ], function(err, results) {
-    callback(err, results);
+    // Remove passes (undefined)
+    var failures = _.filter(results, function(result) {
+      return (result && result[0]);
+    });
+
+    callback(err, failures);
   });
 };
 
